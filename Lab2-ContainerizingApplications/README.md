@@ -178,8 +178,8 @@ The product service uses the NOSQL data that was in the on-premise MongoDB.  You
 3. Select `Configuration` on the left-pane menu
 4. Here you will see some default application setting, and you will add a few more.
 5. Select `+ New application setting` to add each of these NAME/VALUE pairs
-   1. Name: COLLECTION_NAME   Value: inventory. Select `OK`
-   2. Name: DB_CONNECTION_STRING  Value:  (paste in the saved Cosmos DB connection String)
+   1. **<u>NAME</u>:** COLLECTION_NAME   **<u>VALUE</u>:** inventory. Select `OK`
+   2. **<u>NAME</u>:** DB_CONNECTION_STRING  **<u>VALUE</u>:**  (paste in the saved Cosmos DB connection String)
       1. **IMPORTANT:** You need to add the database name 'tailwind' to the connection string.  You will see the server address:port and the the /?ssl flag like this: 
    
          ```
@@ -218,8 +218,8 @@ The inventory service needs to be pointed to the SQL Database that now lives in 
 3. Select `Configuration` on the left-pane menu
 4. Here you will add a Connection String 
 5. Select `+ New connection string`
-   1. Name: 'InventoryContext'
-   2. Value:  (paste in the saved SQL connection String>)
+   1. **<u>NAME</u>:**   InventoryContext
+   2. **<u>VALUE</u>:**  (paste in the saved SQL connection String>)
    3. Update the SQL Connection string with your credentials:
       1. User ID = migrateadmin
       2. Password = AzureMigrateTraining2019# ![SQLConnectionString](../images/SQLConnectionString.png)

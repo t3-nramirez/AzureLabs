@@ -1,5 +1,14 @@
 # Lab 1 - Migrate On-Premises Data Servers To Azure
 
+WELCOME!  Here are some tips-and-tricks you can use while in the workshop
+
+1. Open a Notepad text document and save it.  This is where you can copy-and-paste variables, connection string, credentials vs. having to refer back to another web page for those valus
+2. Open a private browser session to have as your Azure portal, DevOps, and Azure Shell
+3. Have a different browser session open to the GitHub repo with all the lab instructions
+4. In the GitHub repo browser session, also have a tab that contains the credentials you will be given when you start the lab environment for the first time
+
+Your instructor will provide a bit.ly URL and activation code and you will use this to register yourself and gain access to an Azure environment created for you.  These environments will automatically be destroyed 10 hours after you register for the lab.
+
 ## Lab Goals
 
 The goals of this lab is to get you familiar with the Azure environment, portal and command line.  Everything you can do in the Azure Portal can also be done through a command line and scripting.  In this lab, you will setup and configure services and run migations for the on-premises data stores to Azure
@@ -15,7 +24,7 @@ You will need a few things in your environment setup for this lab:
 
 - A SQL Server VM that will act as your on-premise SQL instance that you will migrate to Azure SQL DB
   -	A SQL Server VM has been pre-provisioned for this exercise
-- An Azure SQL Database Instance.  This is the SQL PaaS service you will migrate the on-premise server to.
+- An Azure SQL Database Instance.  This is the SQL PaaS service you will migrate the on-premise server to
   - You will create this as part of the lab
 - A Mongo DB that you will migrate data from to Cosmos DB
   - A public Mongo DB will be made available to you to access remotely
@@ -40,7 +49,7 @@ One thing to consider is that some resources have a limit to how many characters
 
 Open your email that contains your assigned credentials and keep the browser page open for future reference
 
-1. Login to the Azure Portal http://portal.azure.com using your assigned credentials from your email
+1. Login to the Azure Portal http://portal.azure.com using your assigned credentials received at the beginning of the workshop
 2. From the Azure Portal, select `Virtual Machines` from the left-pane menu 
 3. Verify the presence of the VM named 'OnPremSQL' and its status is 'running'.  If it's not running, start it from the top menu
 4. This is the SQL VM you will use as the source database for the migration
@@ -60,23 +69,30 @@ Up until now you have used the Azure Web Portal.  In this exercise, you will cre
 The Azure Cloud Shell is a command shell that runs in your browser; it creates compute in the back end and a storage account.  You can run either PowerShell or Bash; for these exercises you will use Bash
 
 1. Open the Azure portal
-2. Select the `>_` button in the top toolbar 
+2. Select the `>_` button in the top toolbar (top of the browser window)
 3. Select `Bash` on the Welcome Screen 
 4. Select `Show advanced settings` 
 5. Create a new storage account and file share in your resource group.  Use your (prefix) in the name ![CreateBash3](../images/CreateBash3.png)
    1. Use your existing resource group named 'Lab-1-xxxxx'
 6. Select `Create Storage`
 7. Wait for the shell to start
-8. Make sure you are in  `Bash` from the upper-left dropdown of the Cloud Shell window
-9. Create 3 variables by typing the following in the shell and press enter after each line:
+8. Make sure you are in `Bash` from the upper-left dropdown of the Cloud Shell window
+9. Create 3 variables by copying the variables below into a Notepad file, change the values, and then paste them into the Cloud Shell
+
+It's important to use upper case letters and replace what is in the single quotes with the requested values.  For example:
+
+RESOURCE_GROUP_COSMOS='Lab-1-123456' (again this is only an example)
+ACCOUNT_NAME_COSMOS='xyz321migrationcosmos' (again this is only an example)
+
+Leave the LOCATION_COSMOS variable as is - you only need to change the other 2 variables.
 
 ```language-bash
-RESOURCE_GROUP_COSMOS='<your resource group named 'Lab-1-xxxxx'>'
+RESOURCE_GROUP_COSMOS='your Lab-1 resource group named'
 LOCATION_COSMOS='eastus'
 ACCOUNT_NAME_COSMOS='(prefix)migrationcosmos'
 ```
 
-5. Copy the command below and execute it (you can paste in command window with a  right click).  This will create the Azure Cosmos DB Account using the Azure CLI (az commands)
+5. Copy the command below and execute it (you can paste in command window with a  right click).  This will create the Azure Cosmos DB Account using the Azure CLI (az commands).  If you set the variables accurately in the previous step, you do not need to change the 'az cosmosdb...' command.  This command uses the values of those variables when executed
 
 ```language-bash
 az cosmosdb create --resource-group $RESOURCE_GROUP_COSMOS --name $ACCOUNT_NAME_COSMOS --kind MongoDB --locations regionName=$LOCATION_COSMOS
@@ -92,7 +108,7 @@ While you wait for your Cosmos DB instance to spin up you can move on to the cre
 You will now create an Azure SQL Database - this is the target PaaS database for your SQL migration
 
 1. Select the `Create a resource + sign` button in the top-left of the Azure portal
-2. Type 'SQL Database' in the search box and press enter
+2. Type 'SQL Database' in the search Fx and press enter
 3. Select SQL Database 
 4. Select `Create`
 5. From the Basics tab in the menu
@@ -115,7 +131,7 @@ This will take a couple of minutes to complete.  Once finished, all of your setu
 
 ### Exercise 1  -  Assess the source database and migrate it to Azure 
 
-In this lab you will migrate the on premises SQL Server to an instance of SQL Azure DB using the [Database Migration Tool](https://www.microsoft.com/en-us/download/details.aspx?id=53595)
+In this lab you will migrate the on-premises SQL Server to an instance of SQL Azure Database using the Database Migration Tool
 
 #### Finish the SQL Server On-Premises Configuration
 
@@ -129,6 +145,7 @@ In this lab you will migrate the on premises SQL Server to an instance of SQL Az
    1. If not already showing, select the 'Windows' key and type 'Server Manager' to go into the server manager 
    2. Select `Local Server` from the left-pane menu
    2. Select `IE Enhanced Security Configuration` on the right pane 
+   ![IE-EnhancedSec1](../images/IE-EnhancedSec1.png)
    3. Set to 'off' for Administrator if it isn't already set 
    4. Close the Server Manager
 6. Verify the TailWindInventory DB is installed. This is the database we will migrate to Azure
@@ -177,7 +194,7 @@ Now that you know the database can be migrated, you will use the Migration tool 
 6. Select the `TailwindInventory` database, select `Add`
 7. Target Server:  This will be the Azure SQL Server Instance you created.  
    1. In the Azure Portal, select `Resource groups` from the left-pane menu and select your resource group
-   2. Find the SQL Server Instance you created.  It will be resource type of SQL Server
+   2. Find the SQL Server Instance you created.  It will be resource type of SQL Database
    3. Copy the `Server name` on the right hand side of the overview page
    4. Paste that full name into the target server name of the wizard
 8. Choose SQL Server Authentication
@@ -313,7 +330,11 @@ First check to make sure the Cosmos DB instance was created successfully
    2. Select `Connection String` on the left-pane menu
    3. The username and password for you Cosmos DB instance can be copied from here
 3. Go back to the Azure shell 
-4. Create the following environment variables in that shell.  Recommend pasting these completed Bash commands into a Notepad file for later reference
+4. Create the following environment variables in that shell.  Recommend pasting these completed Bash commands into a Notepad file for later reference.
+
+It's important to name these variables in upper case letters as that's how they'll be referenced when we run the BASH commands.  Replace what is between the leading and ending single quote with the named value.  For example:
+
+COSMOS_DB_NAME='lab-1-123456' (again, this is just an example)
 
 ```language-bash
 COSMOS_DB_NAME='<Host name from connection string properties>'

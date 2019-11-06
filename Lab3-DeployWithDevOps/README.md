@@ -51,7 +51,7 @@ In this lab, you will use Azure DevOps to automate the build and deployment of y
 4. Select your `Azure subscription` using the dropdown
 5. Select `Authorize` to create a service connection to Azure
     If you receive an error authorizing the connection, ask assistance from a workshop leader
-6. Select `Azure Container Registry` using the dropdown
+6. Select the `Azure Container Registry` created for you in Lab 3 from the dropdown
 7. From `Docker Compose File`, select `...` and search for the file 'docker-compose.ci.build.yml'
 8. Scroll down to `Action` and select 'Run service images' from the dropdown
 9. Uncheck `Run in Background`
@@ -63,7 +63,7 @@ In this lab, you will use Azure DevOps to automate the build and deployment of y
 1. From the left-pane menu, select `+` next to `docker` and search for 'docker compose' and select `Add`
 2. Set `Display name` to 'Build services'
 3. From `Azure subscription`, select your previously created service connection 
-4. Select your `Azure Container Registry` from the dropdown
+4. Select the `Azure Container Registry` created for you in Lab 3 from the dropdown
 5. From `Docker Compose File`, select `...` and search for the file 'docker-compose.yml'
 6. Enter 'DOCKER_BUILD_SOURCE=' in the `Environment Variables` dialogue
 7. From `Action` select 'Build service images' from the dropdown
@@ -74,7 +74,7 @@ In this lab, you will use Azure DevOps to automate the build and deployment of y
 1. From the left-pane menu, select `+` next to `docker` and search for 'docker compose' and select `Add`
 2. Set `Display name` to 'Push services'
 3. From `Azure subscription`, select your previously created service connection 
-4. Select your `Azure Container Registry` from the dropdown
+4. Select the `Azure Container Registry` created for you in Lab 3 from the dropdown
 5. From `Docker Compose File`, select `...` and search for the file 'docker-compose.yml'
 6. Enter 'DOCKER_BUILD_SOURCE=' in the `Environment Variables` dialogue
 7. From `Action` select 'Push service images' from the dropdown
@@ -126,7 +126,10 @@ In this lab, you will use Azure DevOps to automate the build and deployment of y
 7. Select your build pipeline from the `Source (build pipeline)` dropdown
 8. Set `Default version` to 'Latest'
 9. Set `Source alias` to the suggested value - it will be created from your DevOps project name
-10. Select the `Continuous deployment trigger` icon located in the `Artifacts` section on the right (it resembles a lightning bolt) and on the right set `Continuous deployment trigger` to 'Enabled'
+10. Select the `Continuous deployment trigger` icon located `Artifacts` (it resembles a lightning bolt) and on the right set `Continuous deployment trigger` to 'Enabled'
+
+![44b](./images/44b.png)
+
 11. Select `Save` from top menu and save using the default values
 
 ### Task 2 - configure the SQL database deployment
@@ -171,13 +174,15 @@ In this lab, you will use Azure DevOps to automate the build and deployment of y
 
 ## Task 5 - configure variables
 1. Select `Variables` from the top menu
-2. Select `+ Add` and enter the following
+2. Select `+ Add` and create the following variables
 
-    - Name: ACR, Value: YOUR_ACR.azurecr.io, Scope: Release
-    - Name: DatabaseName, Value: mhcdb, Scope: Release
-    - Name: Password, Value: P2ssw0rd1234, Scope: Release
-    - Name: SQLadmin, Value: sqladmin, Scope: Release
-    - Name: SQLserver, Value: YOUR_DBSERVER.database.windows.net, Scope: Release
+    - **<u>NAME:</u>** ACR    **<u>VALUE:</u>** YOUR_ACR.azurecr.io    **<u>SCOPE:</u>** Release
+        (obtain your_acr.azurecr.io from the pre-create container registry)
+    - **<u>NAME:</u>** DatabaseName    **<u>VALUE:</u>** mhcdb    **<u>SCOPE:</u>** Release
+    - **<u>NAME:</u>** Password    **<u>VALUE:</u>** P2ssw0rd1234    **<u>SCOPE:</u>** Release
+    - **<u>NAME:</u>** SQLadmin    **<u>VALUE:</u>** sqladmin    **<u>SCOPE:</u>** Release
+    - **<u>NAME:</u>** SQLserver    **<u>VALUE:</u>**    YOUR_DBSERVER.database.windows.net    **<u>SCOPE:</u>** Release
+        (the full name, FQDN, of your SQL database server)
 
 3. Select `Save` from the top menu and save using the default values
 
@@ -189,7 +194,7 @@ In this lab, you will use Azure DevOps to automate the build and deployment of y
 2. Select `Pipelines` and then `Builds` from the left-pane menu then select the build name just committed from the right-pane
     - The Build will generate and push the docker image of the web application to the Azure Container Registry. Once the build is completed, the build summary will be displayed
 3. Open the Azure Portal and go into the 'Lab-3-xxxxx' resource group and select the app service. From the left-pane menu, select `Container Settings` and inspect the values
-4. From the Azure Portal, select your 'Azure Container Registry' service and then select `Repositories` option to view the generated docker images.  You should see a repository named 'myhealth.web'
+4. From the Azure Portal, select the 'Azure Container Registry' service and then select `Repositories` option to view the generated docker images.  You should see a repository named 'myhealth.web'
 5. From Azure Dev Ops portal, select `Pipelines` and then `Releases`. Select  the latest release and select on `Logs` to view the details of the release in progress
 6. From the Azure Portal, select your app service and then `Overview` from the left-pane menu. Select the link next to the `URL` field to browse the application
 7. Use the credentials Username: user and Password: P2ssw0rd@1 to login to the HealthClinic.Biz web application
