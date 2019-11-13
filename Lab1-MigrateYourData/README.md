@@ -141,6 +141,11 @@ In this lab you will migrate the on-premises SQL Server to an instance of SQL Az
    1. When prompted on the Remote Desktop Connection, check the box to not be asked again and then select `Connect`
    2. Login with user: '.\migrateadmin' and password: AzureMigrateTraining2019#
    3. When prompted on the Remote Desktop Connection, check the box to not be asked again and then select `Yes`
+   
+   
+   Note: For MAC users you may need to install the [Remote Desktop](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) client from the App Store.
+   
+   
 5. Update IE Security
    1. If not already showing, select the 'Windows' key and type 'Server Manager' to go into the server manager 
    2. Select `Local Server` from the left-pane menu
