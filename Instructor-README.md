@@ -21,7 +21,7 @@ The original code base of the database and application migration labs are from t
 
 [IgniteTheTour-DEV10](https://github.com/microsoft/IgniteTheTour/tree/master/DEV%20-%20Building%20your%20Applications%20for%20the%20Cloud/DEV10)
 
-[IgniteTheTour-MIG20](https://github.com/microsoft/IgniteTheTour/tree/master/MIG - Migrating Applications to the Cloud/MIG20)
+[IgniteTheTour-MIG20](https://github.com/microsoft/IgniteTheTour/tree/master/MIG%20-%20Migrating%20Applications%20to%20the%20Cloud/MIG20 - Migrating Applications to the Cloud/MIG20)
 
 ## Setupfiles
 
