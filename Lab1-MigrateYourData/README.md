@@ -38,7 +38,7 @@ You will need a few things in your environment setup for this lab:
 
 ### Setup 0 - Create a unique prefix
 
-In many cases you need to create a resource that has a unique name.  The easiest way to do this is to create a prefix that you can append to the front of the standard resource names.    As an example, Bill Smith needs a unique prefix so he decided to use his name and the first three digits of his phone number: his prefix is 'BS336'.  Any resources that need to be unique he can now put this in front of the standard name and it should be unique.  
+In many cases you need to create a resource that has a unique name.  The easiest way to do this is to create a prefix that you can append to the front of the standard resource names.    As an example, Bill Smith needs a unique prefix so he decided to use his name and the first three digits of his phone number: his prefix is 'bs336'.  Any resources that need to be unique he can now put this in front of the standard name and it should be unique.  
 
 One thing to consider is that some resources have a limit to how many characters are in a name.  So, keeping your prefix to under 6 characters.  Come up with a prefix you can use for all the labs.
 
@@ -87,7 +87,7 @@ ACCOUNT_NAME_COSMOS='xyz321migrationcosmos' (again this is only an example)
 Leave the LOCATION_COSMOS variable as is - you only need to change the other 2 variables.
 
 ```language-bash
-RESOURCE_GROUP_COSMOS='your Lab-1 resource group named'
+RESOURCE_GROUP_COSMOS='your Lab-1 resource group name'
 LOCATION_COSMOS='eastus'
 ACCOUNT_NAME_COSMOS='(prefix)migrationcosmos'
 ```
@@ -137,23 +137,23 @@ In this lab you will migrate the on-premises SQL Server to an instance of SQL Az
 
 1. From the portal, select `Resource groups` and then select the 'Lab-1-xxxxx' resource group
 2. Select the 'OnPremSQL' virtual machine
-4. Select `Connect` from the top menu, and then select `Download RDP file` 
+3. Select `Connect` from the top menu, and then select `Download RDP file` 
    1. When prompted on the Remote Desktop Connection, check the box to not be asked again and then select `Connect`
-   2. Login with user: '.\migrateadmin' and password: AzureMigrateTraining2019#
+   2. Login with user: '.\migrateadmin' and password: AzureMigrateTraining2019
    3. When prompted on the Remote Desktop Connection, check the box to not be asked again and then select `Yes`
    
    
    Note: For MAC users you may need to install the [Remote Desktop](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) client from the App Store.
    
    
-5. Update IE Security
+4. Update IE Security
    1. If not already showing, select the 'Windows' key and type 'Server Manager' to go into the server manager 
    2. Select `Local Server` from the left-pane menu
-   2. Select `IE Enhanced Security Configuration` on the right pane 
+   3. Select `IE Enhanced Security Configuration` on the right pane 
    ![IE-EnhancedSec1](../images/IE-EnhancedSec1.png)
-   3. Set to 'off' for Administrator if it isn't already set 
-   4. Close the Server Manager
-6. Verify the TailWindInventory DB is installed. This is the database we will migrate to Azure
+   4. Set to 'off' for Administrator if it isn't already set 
+   5. Close the Server Manager
+5. Verify the TailWindInventory DB is installed. This is the database we will migrate to Azure
    1. From the Windows start menu, type 'SQL Server Management'
    2. Launch the SQL Server Management Studio and connect to the local SQL instance. Use Windows Authentication
    3. You should see the TailwindInventory DB installed
@@ -169,15 +169,16 @@ First you need to do a migration assessment to ensure the database has no issues
       - Project Name: `tailwind`
       - Source server type: `SQL server`
       - Target server type: `Azure SQL Database`
-1. Select `Create`
-2. Check `Check database compatibility`
-3. Check `Check feature parity`
-4. Select `Next`
-5. Enter 'localhost' for server name and Windows authentication
-6. UN-Check the Encrypt Connection Box
-7. Select the `TailwindInventory` database, select `Add`
-8. Select `Start Assessment`
-9. You will see a report on compatibility issues, and in a production environment you would now have a list of possible incompatibilities that would have to be addressed.
+3. Select `Create`
+4. Check `Check database compatibility`
+5. Check `Check feature parity`
+6. Select `Next`
+7. Enter 'localhost' for server name and Windows authentication
+8. UN-Check the Encrypt Connection Box
+9. Select `Connect`
+10. Select the `TailwindInventory` database, select `Add`
+11. Select `Start Assessment`
+12. You will see a report on compatibility issues, and in a production environment you would now have a list of possible incompatibilities that would have to be addressed.
 
 #### Schema Migration 
 
