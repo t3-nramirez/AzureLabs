@@ -139,7 +139,7 @@ In this lab you will migrate the on-premises SQL Server to an instance of SQL Az
 2. Select the 'OnPremSQL' virtual machine
 4. Select `Connect` from the top menu, and then select `Download RDP file` 
    1. When prompted on the Remote Desktop Connection, check the box to not be asked again and then select `Connect`
-   2. Login with user: '.\migrateadmin' and password: AzureMigrateTraining2019#
+   2. Login with user: '.\migrateadmin' and password: AzureMigrateTraining2019
    3. When prompted on the Remote Desktop Connection, check the box to not be asked again and then select `Yes`
    
    
