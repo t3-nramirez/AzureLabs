@@ -1,4 +1,4 @@
-# Lab3 - Use Azure DevOps to manage build and deployment of your application
+# Lab3 - Use Azure DevOps to manage build and deploy your application
 
 ## Lab Goals: Deploying a Docker based web application to Azure App Service
 In this lab, you will use Azure DevOps to automate the build and deployment of your application to Azure
