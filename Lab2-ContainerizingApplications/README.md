@@ -2,7 +2,7 @@
 
 ## Lab Goals
 
-The goal of this lab is to take an existing web application and move it from a standard deployment using on premises web farms to a container infrastructure on Azure.  This will enable a much more saleable environment with a lot less management.   In this lab you will:
+The goal of this lab is to take an existing web application and move it from a standard deployment using on premises web farms to a container infrastructure on Azure.  This will enable a much more scalable environment with a lot less management.   In this lab you will:
 
 ### Learning Objectives
       - Create a container registry in Azure
