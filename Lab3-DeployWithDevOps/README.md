@@ -144,7 +144,7 @@ In order to complete this task, you will need the original email link sent to yo
 1. From the top menu, select `Tasks` 
 2. Select `Agent job`
 3. Set `Display name` to 'DB Deployment'
-4. Select the `+ Add` button and create the variable
+4. Select the `+ Add` button from the Demands section and create the variable
     - Name: sqlpackage, Condition: exists
 5. Select `+` next to `DB Deployment` in left-pane and search for 'Azure SQL database deployment' and select `Add`
 7. From the left-pane, select `Azure SQL Dacpac Task`
