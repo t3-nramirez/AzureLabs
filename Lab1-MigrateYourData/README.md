@@ -290,7 +290,7 @@ You will do this from the Azure Bash Shell
    
 2. Download the MongoDB client tools (you can paste into the shell with a right click)
 
-   ```bash
+   ```
    wget https://repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/4.0/multiverse/binary-amd64/mongodb-org-tools_4.0.11_amd64.deb
    ```
 
@@ -348,7 +348,7 @@ Now that you have a copy of the data locally, you can use the mongorestore comma
    COSMOS_DB_NAME='<Host name from connection string properties>'
    COSMOS_USER='<username from connection string properties>'
    COSMOS_PWD='<primary password from connection string properties>'
-  v```
+   ```
 
 5. Make sure you are still in the `/dump/tailwind` directory
 6. Copy and paste this command to run a mongo restore:
