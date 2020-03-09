@@ -313,7 +313,7 @@ You will do this from the Azure Bash Shell
 1. Dump the data from the remote MongoDB with the following Command:
 
    ```  bash
-   mongodump --host 40.121.69.6 --username=labuser --password=AzureMigrateYourApp --db=tailwind --authenticationDatabase=tailwind
+   mongodump --host 40.121.69.6 --username=labuser --password=AzureMigrateYourApps --db=tailwind --authenticationDatabase=tailwind
    ```
 
 3. Verify that the tailwind directory exists and has a dump that contains the .bson and metadata files;  Run the Bash commands shown in the following picture: 
