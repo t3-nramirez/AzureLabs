@@ -343,25 +343,27 @@ Now that you have a copy of the data locally, you can use the mongorestore comma
       * We recommend pasting these completed Bash commands into a Notepad file for later reference.
 
       * It's important to name these variables in upper case letters as that's how they'll be referenced when we run the BASH commands.  Replace what is between the leading and ending single quote with the named value.  For example: `COSMOS_DB_NAME='lab-1-123456' (again, this is just an example)`
-      ```
-COSMOS_DB_NAME='<Host name from connection string properties>'
-COSMOS_USER='<username from connection string properties>'
-COSMOS_PWD='<primary password from connection string properties>'
-      ```
-5. Make sure you are still in the /dump/tailwind directory
+
+   ```
+   COSMOS_DB_NAME='<Host name from connection string properties>'
+   COSMOS_USER='<username from connection string properties>'
+   COSMOS_PWD='<primary password from connection string properties>'
+  v```
+
+5. Make sure you are still in the `/dump/tailwind` directory
 6. Copy and paste this command to run a mongo restore:
 
    ```
-mongorestore \
-    --host $COSMOS_DB_NAME:10255 \
-    -u $COSMOS_USER \
-    -p $COSMOS_PWD \
-    --ssl \
-    --sslAllowInvalidCertificates \
-    inventory.bson \
-    --db tailwind \
-    --collection inventory
-      ```
+   mongorestore \
+       --host $COSMOS_DB_NAME:10255 \
+       -u $COSMOS_USER \
+       -p $COSMOS_PWD \
+       --ssl \
+       --sslAllowInvalidCertificates \
+       inventory.bson \
+       --db tailwind \
+       --collection inventory
+   ```
 7. Go into your Azure Cosmos DB account and select `Data Explorer`
 8. Select the `refresh` button next to Collections if you don't see the tailwind collection
 9. Select the `tailwind` database
